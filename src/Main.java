@@ -13,7 +13,7 @@ public class Main {
         int target = Integer.parseInt(scanner.nextLine());
 
         TwoNumbersSum twoSum = new TwoNumbersSum();
-        twoSum.twoNumbersSum(convertStringToArray(input), target);
+        twoSum.twoNumbersSum(convertStringToArray(input, target), target);
 
     }
 
@@ -22,12 +22,25 @@ public class Main {
      * @param input is String from input
      * @return int[]
      */
-    protected static int[] convertStringToArray(String input) {
+    protected static int[] convertStringToArray(String input, int target) {
 
         int[] numbers = Stream.of(input.replaceAll("[\\[\\,\\]]", "")
                 .split(" ")).mapToInt(Integer::parseInt).toArray();
 
-        return numbers;
+        return sortArray(numbers, target);
+
+    }
+
+    /**
+     * Sort and refactoring array
+     * @param numbers is array of integers
+     * @return int[]
+     */
+    protected static int[] sortArray(int[] numbers, int target) {
+
+        int[] result = Arrays.stream(numbers).sorted().filter(n -> n < target).toArray();
+
+        return result;
 
     }
 

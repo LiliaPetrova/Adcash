@@ -20,7 +20,7 @@ class TwoNumbersSum {
      */
     String resultNumbers(int[] numbers, int target) {
 
-        if (numbers.length != 1 && numbers[0] < target && ((target - numbers[0]) > numbers[0])) {
+        if (numbers.length > 1 && numbers[0] < target && ((target - numbers[0]) > numbers[0])) {
             int left = 0;
             int right = numbers.length - 1;
 
